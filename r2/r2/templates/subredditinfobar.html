@@ -27,7 +27,6 @@
    from r2.lib.pages import WrappedUser
  %>
 
-<%namespace file="subreddit.html" import="addremove_button" />
 <%namespace file="printablebuttons.html" import="ynbutton, state_button" />
 
 <%def name="moderate_button(location, fmt, question, left)">
@@ -37,9 +36,7 @@
 </%def>
 
 <div class="titlebox">
-  <h1>${thing.sr.name}</h1>
 
-  ${addremove_button(thing.sr)}
   ${unsafe(Score.readers(thing.subscribers))}
 
   %if thing.sr.moderator:
@@ -57,17 +54,13 @@
                       _("you are no longer an approved submitter"))}
   %endif
 
-  %if thing.sr.description:
-    ${thing.sr.usertext}
-  %endif
-
   <div class="bottom">
     %if thing.sr.author:
       ${unsafe(_("created by&#32;%(user)s") % dict(user = unsafe(WrappedUser(thing.sr.author).render())))}
     %endif
     
     <span class="age">
-      ${_("a community for %(time)s") % dict(time=timesince(thing.sr._date))}
+      ${_("an accelerator for %(time)s") % dict(time=timesince(thing.sr._date))}
     </span>  
   </div>
 

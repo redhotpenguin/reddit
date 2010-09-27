@@ -29,11 +29,7 @@
 <%namespace file="utils.html" import="error_field, submit_form, plain_link, text_with_links, reddit_selector"/>
 <%namespace name="utils" file="utils.html"/>
 
-%if c.on_default_sr:
-  <h1>${_("submit to reddit")}</h1>
-%else:
-  <h1>${_("submit to %(sr)s") % dict(sr=thing.default_sr)}</h1>
-%endif
+<h1>${_("Submit a link OR submit your own text post")}</h1>
 
 <%utils:submit_form onsubmit="return post_form(this, 'submit', linkstatus, null, true)" 
                     action=${add_sr("/submit")},
@@ -95,8 +91,8 @@ ${thing.formtabs_menu}
 %endif
 
 <div class="spacer">
-  <%utils:round_field title="${_('reddit')}" id="reddit-field">
-    ${reddit_selector(thing.default_sr, thing.sr_searches, thing.subreddits)}
+  <%utils:round_field title="${_('Topic')}" id="reddit-field">
+    ${reddit_selector('', thing.sr_searches, thing.subreddits)}
   </%utils:round_field>
 </div>
 

@@ -59,11 +59,9 @@ def upload_thumb(link, image, never_expire = True, reduced_redundancy=True):
 
         s3fname = link._fullname + '.png'
 
-        log.debug('uploading to s3: %s' % link._fullname)
         s3cp.send_file(g.s3_thumb_bucket, s3fname, contents, 'image/png',
                        never_expire=never_expire,
                        reduced_redundancy=reduced_redundancy)
-        log.debug('thumbnail %s: %s' % (link._fullname, thumbnail_url(link)))
     finally:
         os.unlink(f.name)
 
@@ -122,3 +120,9 @@ def run():
             print traceback.format_exc()
 
     amqp.consume_items('scraper_q', process_link)
+
+def retro_burn():
+    for foo in Link._query():
+        amqp.add_item('scraper_q',foo._fullname)
+
+

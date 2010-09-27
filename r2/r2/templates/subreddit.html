@@ -41,6 +41,7 @@
   ${self.admintagline()}
   %endif
 </p>
+
 %if thing.description:
   <div class="description">
     ${thing.usertext}
@@ -100,7 +101,6 @@
 
 <%def name="midcol(display=True, cls='')">
   <div class="midcol">
-    ${addremove_button(thing)}
     ${permission_icons(thing)}
   </div>
 </%def>

@@ -26,7 +26,6 @@
   <ul>
   %for sr in thing.reddits:
     <li>
-      ${addremove_button(sr)}
       ${plain_link(sr.name, sr.path, _class="title")}
       ${permission_icons(sr)}
     </li>

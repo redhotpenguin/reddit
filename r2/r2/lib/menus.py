@@ -115,7 +115,7 @@ menu =   MenuHandler(hot          = _('hot'),
                      sent         = _("sent"),
 
                      # comments
-                     comments     = _("comments {toolbar}"),
+                     comments     = _("comments"),
                      related      = _("related"),
                      details      = _("details"),
                      duplicates   = _("other discussions (%(num)s)"),
@@ -401,7 +401,7 @@ class SimpleGetMenu(NavMenu):
 class SortMenu(SimpleGetMenu):
     """The default sort menu."""
     get_param = 'sort'
-    default   = 'hot'
+    default   = 'new'
     options   = ('hot', 'new', 'top', 'old', 'controversial')
 
     def __init__(self, **kw):
@@ -449,7 +449,7 @@ class RecSortMenu(SortMenu):
 
 class NewMenu(SimpleGetMenu):
     get_param = 'sort'
-    default   = 'rising'
+    default   = 'new'
     options   = ('new', 'rising')
     type = 'flatlist'
 

@@ -301,9 +301,9 @@ class Globals(object):
 
         if not self.media_domain:
             self.media_domain = self.domain
-        if self.media_domain == self.domain:
-            print ("Warning: g.media_domain == g.domain. " +
-                   "This may give untrusted content access to user cookies")
+        #if self.media_domain == self.domain:
+            #print ("Warning: g.media_domain == g.domain. " +
+            #       "This may give untrusted content access to user cookies")
 
         #read in our CSS so that it can become a default for subreddit
         #stylesheets

@@ -255,7 +255,7 @@ def _request(method, url, params={}, data={}, headers={}):
     elif response.status == 401:
         raise Unauthorized('Authorization required. Use your private api_url.')
     else:
-        raise HttpException(response.status, response.body) 
+        raise HttpException(response.status, response.body+url ) 
     connection.close()
     return ret
 

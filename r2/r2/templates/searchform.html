@@ -25,11 +25,12 @@
 %>
 
 <form action="${add_sr('/search')}" id="search">
+<img src="/static/search.gif">
   <input type="text" 
          %if thing.prev_search:
            value="${thing.prev_search}" style="color:black"
          %else:
-           value="${_('search reddit')}" class="gray"
+           value="${_('type here to search')}" class="gray"
          %endif
          name="q"/>
   %for k, v in thing.search_params.iteritems():

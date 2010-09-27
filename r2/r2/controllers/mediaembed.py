@@ -35,6 +35,7 @@ class MediaembedController(MinimalController):
     @validate(link = VLink('link'))
     def GET_mediaembed(self, link):
         if request.host != g.media_domain:
+            g.log.debug("request host %s, media domain %s" % ( request.host, g.media_domain))
             # don't serve up untrusted content except on our
             # specifically untrusted domain
             abort(404)

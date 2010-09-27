@@ -121,14 +121,18 @@
 <%def name="bodyHTML()">
   <body onclick="close_menus()">
     <%include file="redditheader.html"/>
-  
+
     %if thing.show_sidebar:
       <div class="side">
         ${sidebar(content = thing.rightbox())}
       </div>
     %endif
-    
-    %if thing.content:
+
+    %if not c.default_sr:
+        <%include file="subreddit_desc.html"/>
+    %endif 
+      
+      %if thing.content:
       ##<div class="fixedwidth"><!--IE6sux--></div>
       ##<div class="clearleft"><!--IE6sux--></div>
       <a name="content"></a>
@@ -195,10 +199,6 @@
        # drop the scheme and the first /
        fullpath = ':'.join(fullpath.split(':')[1:])[1:]
      %>
-    <iframe id="comscore" class="to-pay-the-bills" frameborder="0"
-            style="width:1px; height:1px"
-            scrolling="no" src="/comscore-iframe${fullpath}">
-    </iframe>
   </body>
 </%def>
 

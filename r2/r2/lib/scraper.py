@@ -92,7 +92,6 @@ def clean_url(url):
 
 def fetch_url(url, referer = None, retries = 1, dimension = False):
     cur_try = 0
-    log.debug('fetching: %s' % url)
     nothing = None if dimension else (None, None)
     url = clean_url(url)
     #just basic urls
@@ -131,9 +130,10 @@ def fetch_url(url, referer = None, retries = 1, dimension = False):
                 if dimension and p.image:
                     return p.image.size
                 elif dimension:
+                    log.debug('dim only: %s' % dimension)
                     return nothing
             elif dimension:
-                #expected an image, but didn't get one
+                log.debug('expected an image, but didnt get one')
                 return nothing
 
             return content_type, content
@@ -220,7 +220,7 @@ class Scraper:
 
             #ignore excessively long/wide images
             if max(size) / min(size) > 1.5:
-                log.debug('ignore dimensions %s' % image_url)
+                log.debug('IMAGE TOO FUNKY: %s' % image_url)
                 continue
 
             #penalize images with "sprite" in their name
@@ -236,6 +236,7 @@ class Scraper:
 
     def thumbnail(self):
         image_url = self.largest_image_url()
+        log.debug('image url: %s', image_url)
         if image_url:
             content_type, image_str = fetch_url(image_url, referer = self.url)
             if image_str:
@@ -244,6 +245,7 @@ class Scraper:
                     image = prepare_image(image)
                 except IOError, e:
                     #can't read interlaced PNGs, ignore
+                    log.debug('io error')
                     if 'interlaced' in e.message:
                         return
                     raise

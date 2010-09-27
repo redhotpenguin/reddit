@@ -368,8 +368,8 @@ def reindex_all(types = None, delete_all_first=False):
                                       if not x._spam and not x._deleted ])
 
                 count += len(r)
-                print ("Processing %s #%d(%s): %s"
-                       % (cls.__name__, count, q.qsize(), r[0]['contents']))
+                #print ("Processing %s #%d(%s): %s"
+                #       % (cls.__name__, count, q.qsize(), r[0]['contents']))
 
                 if indexer.isAlive():
                     q.put(r)
@@ -468,6 +468,8 @@ class SearchQuery(object):
         if self.sort is not None:
             attrs.append("sort=%r" % self.sort)
 
+	attrs.append("order=asc")
+
         return "<%s(%s)>" % (self.__class__.__name__, ", ".join(attrs))
 
     def run(self, after = None, num = 1000, reverse = False,
@@ -544,7 +546,7 @@ class SearchQuery(object):
 
         q,solr_params = self.solr_params(self.q,boost)
 
-        search = self.run_search(q, self.sort, solr_params,
+        search = self.run_search(q, 'score desc', solr_params,
                                  reverse, after, num,
                                  _update = _update)
         return search

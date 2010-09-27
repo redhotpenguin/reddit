@@ -412,7 +412,6 @@ ul.flat-vert {text-align: left;}
 }
 
 .sidebox.submit .spacer {
-    background-image: url(/static/submit-alien.png);  /* SPRITE */
     background-repeat:no-repeat;
 }
 
@@ -601,7 +600,7 @@ ul.flat-vert {text-align: left;}
 }
 
 .organic-listing .link {
-    background-color: #F8F8F8; 
+    background-color: #CCFDC0; 
 }
 .organic-listing .link,
 .organic-listing .link.promotedlink {
@@ -2590,12 +2589,12 @@ ul#image-preview-list .description pre {
 
 #sr-header-area {
     padding: 3px 0px 3px 5px;
-    background-color: #f0f0f0;
+    background-color: #FFFFFF;
     white-space: nowrap;
     overflow: hidden;
     text-transform: uppercase;
     border-bottom: 1px solid gray;
-    font-size: 90%;
+    font-size: 150%;
  }
 
 #sr-header-area .selected a {
@@ -2899,6 +2898,9 @@ ul.tabmenu.formtab {
 /*permalinks*/
 .usertext.border .usertext-body {
     background-color: #ffc; padding-left: 5px;
+	color:#666666
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
 }
 
 .usertext.grayed .usertext-body {

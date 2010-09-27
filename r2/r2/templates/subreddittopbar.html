@@ -23,14 +23,10 @@
 <%namespace file="utils.html" import="plain_link"/>
 
 <div id="sr-header-area">
-  %for m in thing.sr_bar():
-     ${m.render()}
-  %endfor
 
-  <%
-     editmore = 'edit' if c.user_is_loggedin else 'more'
-   %>
+  <strong>INNOVATIONS IN JOURNALISM:</strong>&nbsp;&nbsp;
 
-  ${plain_link(unsafe(_(editmore) + " &raquo;"),
-               "/reddits/", id="sr-more-link")}
+<ul class="flat-list sr-bar hover" ><li><a href="/r/business/">Business</a></li><li><span class="separator">-</span><a href="/r/craft/">Craft</a></li><li><span class="separator">-</span><a href="/r/technology" >Technology</a></li><li><span class="separator">-</span><a href="/r/community" >Community</a></li><li><span class="separator">-</span><a href="/r/trends" >Trends</a></li><li><span class="separator">-</span><a href="/r/distribution" >Distribution</a></li></ul>
+
+
 </div>

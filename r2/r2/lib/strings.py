@@ -60,7 +60,7 @@ string_dict = dict(
     # this is for Japanese which treats people counds differently
     person_label = _("<span class='number'>%(num)s</span>&#32;<span class='word'>%(persons)s</span>"),
 
-    firsttext = _("reddit is a source for what's new and popular online. vote on links that you like or dislike and help decide what's popular, or submit your own!"),
+    firsttext = _("The Journalism Accelerator is a community-grown project focused on helping people connect, exchange information and find the resources they need to advance journalism. It is the first step in building a virtual community gathering-place powered by the semantic web. We aim to nurture a transparent, ongoing conversation through which good ideas get better and big problems become smaller."),
 
     already_submitted = _("that link has already been submitted, but you can try to [submit it again](%s)."),
 
@@ -119,7 +119,7 @@ string_dict = dict(
         invalid_property_list = _('invalid CSS property list "%(proplist)s"'),
         unknown_rule_type = _('unknown CSS rule type "%(ruletype)s"')
     ),
-    submit_box_text = _('to anything interesting: news article, blog entry, video, picture...'),
+    submit_box_text = _('post to journalism accelerator'),
     permalink_title = _("%(author)s comments on %(title)s"),
     link_info_title = _("%(title)s : %(site)s"),
     banned_subreddit = _("""**this reddit has been banned**\n\nmost likely this was done automatically by our spam filtering program. the program is still learning, and may even have some bugs, so if you feel the ban was a mistake, please send a message to [our site admins](%(link)s) and be sure to include the **exact name of the reddit**."""),

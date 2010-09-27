@@ -100,7 +100,7 @@ class Reddit(Templated):
           (e.g. js, xml for rss, etc.)
     '''
 
-    create_reddit_box  = True
+    create_reddit_box  = False
     submit_box         = True
     footer             = True
     searchbox          = True
@@ -148,9 +148,9 @@ class Reddit(Templated):
         if infotext:
             self.infobar = InfoBar(message = infotext)
 
-        self.srtopbar = None
-        if not c.cname and not is_api():
-            self.srtopbar = SubredditTopBar()
+        #self.srtopbar = None
+        #if not c.cname and not is_api():
+        self.srtopbar = SubredditTopBar()
 
         if c.user_is_loggedin and self.show_sidebar and not is_api():
             self._content = PaneStack([ShareLink(), content])
@@ -211,10 +211,10 @@ class Reddit(Templated):
             no_ads_yet = False
 
         if self.submit_box:
-            ps.append(SideBox(_('Submit a link'),
+            ps.append(SideBox(_('Submit a Link'),
                               '/submit', 'submit',
                               sr_path = True,
-                              subtitles = [strings.submit_box_text],
+                              subtitles = [],
                               show_cover = True))
 
         if self.create_reddit_box:
@@ -223,16 +223,7 @@ class Reddit(Templated):
                               subtitles = rand_strings.get("create_reddit", 2),
                               show_cover = True, nocname=True))
 
-        if not c.user.gold and self.submit_box:
-            ps.append(SideBox(_('New subscriber features'),
-                              'http://blog.reddit.com/2010/07/three-new-features-for-reddit-gold.html',
-                              'gold',
-                              sr_path = False,
-                              subtitles = ["reddit gold just got better!",
-                                           "(read all about it on the blog)"],
-                              show_cover = False, nocname = True))
-
-        if not isinstance(c.site, FakeSubreddit) and not c.cname:
+        if not isinstance(c.site, FakeSubreddit): # and not c.cname:
             moderators = self.sr_moderators()
             if moderators:
                 total = len(c.site.moderators)
@@ -247,7 +238,7 @@ class Reddit(Templated):
                                          more_href = mod_href,
                                          more_text = more_text))
 
-            if (c.user_is_loggedin and
+        if (c.user_is_loggedin and
                 (c.site.is_moderator(c.user) or c.user_is_admin)):
                 ps.append(SideContentBox(_('admin box'), self.sr_admin_menu()))
 
@@ -290,6 +281,8 @@ class Reddit(Templated):
                                            target = "_self")]
             buttons += [NamedButton("prefs", False,
                                   css_class = "pref-lang")]
+            buttons += [NamedButton("help", False,
+                                  css_class = "help-lang")]
         else:
             lang = c.lang.split('-')[0] if c.lang else ''
             buttons += [JsButton(g.lang_name.get(lang, lang),  
@@ -448,7 +441,7 @@ class RedditMin(Reddit):
        etc"""
     footer       = False
     show_sidebar = False
-    show_firsttext = False
+    show_firsttext = True
 
 class LoginFormWide(CachedTemplate):
     """generates a login form suitable for the 300px rightbox."""
@@ -1491,10 +1484,10 @@ class NewLink(Templated):
 
         tabs = []
         if c.default_sr or c.site.link_type != 'self':
-            tabs.append(('link', ('link-desc', 'url-field')))
+            tabs.append(('Submit_a_link', ('link-desc', 'url-field')))
             self.show_link = True
         if c.default_sr or c.site.link_type != 'link':
-            tabs.append(('text', ('text-desc', 'text-field')))
+            tabs.append(('Submit_your_own_post', ('text-desc', 'text-field')))
             self.show_self = True
 
         if self.show_self and self.show_link:

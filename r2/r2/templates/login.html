@@ -29,6 +29,9 @@
 <%namespace file="captcha.html" import="captchagen"/>
 <%namespace file="utils.html" import="error_field, plain_link, text_with_links, img_link"/>
 
+  
+<p class="error">${_("Just finish registering?  Login to the site now!")}</p>
+
 ## default content 
 %if c.user_is_loggedin:
   <p class="error">${_("you are logged in. go use the site!")}</p>
@@ -128,14 +131,9 @@
   <div class="loginform divide">
     <h3>${_("create a new account")}</h3>
     <p class="tagline">
-      ${_("all it takes is a username and password")}
+      ${_("The journalism accelerator is powered by people like you. It takes 10 seconds to sign up and we would love to have you join the conversation.")}
     </p>
     ${lf(register=True, user=user_reg, dest=dest)}
-    <p>
-      <span class="orangered">
-        ${_("is it really that easy? only one way to find out...")}
-      </span>
-    </p>
   </div>
   <div class="loginform">
     <h3>${_("login")}</h3>
