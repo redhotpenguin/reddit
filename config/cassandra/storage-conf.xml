@@ -148,7 +148,7 @@
    ~ Throughput setting for Binary Memtables.  Typically these are
    ~ used for bulk load so you want them to be larger.
   -->
-  <BinaryMemtableThroughputInMB>256</BinaryMemtableThroughputInMB>
+  <BinaryMemtableThroughputInMB>128</BinaryMemtableThroughputInMB>
   <!--
    ~ The maximum number of columns in millions to store in memory per
    ~ ColumnFamily before flushing to disk.  This is also a per-memtable
