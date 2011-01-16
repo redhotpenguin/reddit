@@ -2039,7 +2039,6 @@ textarea.gray { color: gray; }
 }
 
 .toolbar .left-side {
-    height: 19px;
     float: left;
     border-right: solid #336699 1px;
     background-color: #EFF7FF;

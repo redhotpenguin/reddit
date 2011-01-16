@@ -42,3 +42,7 @@ $$ language sql immutable;
 
 create view active as
     select pg_stat_activity.procpid, (now() - pg_stat_activity.query_start) as t, pg_stat_activity.current_query from pg_stat_activity where (pg_stat_activity.current_query <> '<IDLE>'::text) order by (now() - pg_stat_activity.query_start);
+
+create or replace function domain(character varying) returns text as $$
+    select regexp_matches($1, E'http://([^/]+)')
+$$ language sql immutable;
